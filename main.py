@@ -1,4 +1,5 @@
-from yt_dlp_local.yt_dlp.YoutubeDL import YoutubeDL
+# from yt_dlp_local.yt_dlp.YoutubeDL import YoutubeDL
+import yt_dlp
 import flask
 from flask import request, send_file
 import os
@@ -26,7 +27,7 @@ def downloadYTSong():
         'outtmpl': f'{content["sessionDir"]}/song.%(ext)s'
     }
 
-    with YoutubeDL(ydl_opts) as ydl:
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
         return send_file(path, as_attachment=True)
 
