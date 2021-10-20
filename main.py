@@ -1,16 +1,15 @@
-import shutil
-
 from yt_dlp_local.yt_dlp.YoutubeDL import YoutubeDL
 import flask
-from flask import request, jsonify, send_file, after_this_request
+from flask import request, send_file
 import os
 
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
+print('App started and working! Yay!')
 
 @app.route('/download', methods=['POST'])
-def predictTextSentiment():
+def downloadYTSong():
     content = request.json
     print(content)
 
