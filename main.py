@@ -9,6 +9,11 @@ app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 print('App started and working! Yay!')
 
+# So it wakes up with the front on Heroku
+@app.route('/wakeup', methods=['GET'])
+def wakeUp():
+    return "Yes master, I'm awake."
+
 @app.route('/download', methods=['POST'])
 def downloadYTSong():
     content = request.json
