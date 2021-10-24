@@ -30,10 +30,10 @@ def downloadYTSong():
     except OSError as error:
         print(error)
 
-    path = f'{content["sessionDir"]}/song.webm'
+    path = f'{content["sessionDir"]}song.webm'
     ydl_opts = {
         'format': 'bestaudio/best',
-        'outtmpl': f'{content["sessionDir"]}/song.%(ext)s'
+        'outtmpl': f'{content["sessionDir"]}song.%(ext)s'
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
