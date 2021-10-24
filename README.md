@@ -1,2 +1,2 @@
 # yt-dlp-back
- yt-dlp endpoint in Python with Flask. for my yt-converter web application
+simple yt-dlp backend in Python with Flask for my youtube-converter web application
