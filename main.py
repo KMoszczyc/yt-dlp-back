@@ -11,14 +11,14 @@ print('App started and working! Yay!')
 
 @app.route('/wakeup', methods=['GET'])
 @cross_origin()
-def wakeUp():
+def wake_up():
     """  An endpoint to make sure the flask dyno wakes up with the front on Heroku """
 
     return jsonify("Yes master, I'm awake.")
 
 @app.route('/download', methods=['POST'])
 @cross_origin()
-def downloadYTSong():
+def download_yt_song():
     """ Endpoint for downloading mp3's from youtube by yt-dlp """
 
     content = request.json
@@ -30,12 +30,14 @@ def downloadYTSong():
     except OSError as error:
         print(error)
 
-    path = f'{content["sessionDir"]}song.webm'
+    dir_path = os.path.join(os.path.abspath(os.getcwd()), 'data', content["sessionDir"])
+    final_path = os.path.join(os.path.abspath(os.getcwd()), 'data', content["sessionDir"], 'song.webm')
+    print(final_path)
     ydl_opts = {
         'format': 'bestaudio/best',
-        'outtmpl': f'{content["sessionDir"]}song.%(ext)s'
+        'outtmpl': os.path.join(dir_path, 'song.%(ext)s')
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
-        return send_file(path, as_attachment=True)
+        return send_file(final_path, as_attachment=True)
