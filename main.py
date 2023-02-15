@@ -6,15 +6,13 @@ import os
 from flask_cors import cross_origin, CORS
 
 app = flask.Flask(__name__)
-cors = CORS(app)
 print('App started and working! Yay!')
 
 @app.route('/wakeup', methods=['GET'])
 @cross_origin()
 def wake_up():
     """  An endpoint to make sure the flask dyno wakes up with the front on Heroku """
-
-    return jsonify("Yes master, I'm awake.")
+    return jsonify("Yes master, yt-dlp backend is at your service. Just please don't download too much or Youtube will block us. :(")
 
 @app.route('/download', methods=['POST'])
 @cross_origin()
