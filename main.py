@@ -3,10 +3,10 @@ import yt_dlp
 import flask
 from flask import request, send_file, jsonify
 import os
-from flask_cors import cross_origin
+from flask_cors import cross_origin, CORS
 
 app = flask.Flask(__name__)
-app.config["DEBUG"] = True
+cors = CORS(app)
 print('App started and working! Yay!')
 
 @app.route('/wakeup', methods=['GET'])
