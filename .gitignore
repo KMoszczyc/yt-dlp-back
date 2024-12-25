@@ -114,3 +114,5 @@ dmypy.json
 .pyre/
 
 .idea/
+cookies.txt
+encoded_cookies.txt

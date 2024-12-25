@@ -3,8 +3,13 @@ import yt_dlp
 import flask
 from flask import request, send_file, jsonify
 import os
+
+from flask.cli import load_dotenv
 from flask_cors import cross_origin, CORS
 
+load_dotenv()
+
+COOKIE = os.getenv('COOKIE')
 app = flask.Flask(__name__)
 print('App started and working! Yay!')
 
@@ -33,6 +38,7 @@ def download_yt_song():
     print(final_path)
     ydl_opts = {
         'format': 'bestaudio/best',
+        'cookies': COOKIE,
         'outtmpl': os.path.join(dir_path, 'song.%(ext)s')
     }
 
